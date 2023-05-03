@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var convo1 = new RonVSKanyeAPI();
+            var weatherCheck = new OpenWeatherMapAPI();
+          convo1.RonKanyeConvo();
+            weatherCheck.cityWeather("Dayton");
+            
         }
     }
 }
