@@ -1,20 +1,24 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace APIsAndJSON
 {
-    public class RonVSKanyeAPI
+    public class RonVSKanyeAPI 
     {
         HttpClient client = new HttpClient();
+
         string kanyeURL = "https://api.kanye.rest/";
         string swansonURL = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
         public void RonKanyeConvo(int sentenceCount)
         {
-
+           
             if (sentenceCount < 5)
             {
                 var ronKanyeConvo = new List<string>();
@@ -46,7 +50,7 @@ namespace APIsAndJSON
 
 
         }
-        public void RonKanyeConvo()
+        public void RonKanyeConvo( )
         {
             for (int i = 1; i <= 5; i++)
             {

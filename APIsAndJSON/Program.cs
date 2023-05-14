@@ -1,4 +1,8 @@
-﻿namespace APIsAndJSON
+﻿using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
+using System.Data;
+
+namespace APIsAndJSON
 {
     public class Program
     {

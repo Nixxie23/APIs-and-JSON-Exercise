@@ -1,23 +1,24 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace APIsAndJSON
 {
-    public class OpenWeatherMapAPI
+    public class OpenWeatherMapAPI : APIs
     {
         HttpClient client = new HttpClient();
-        
-        
-    public void cityWeather(string city) 
-        { 
+       
+
+        public void cityWeather(string city) 
+        {
 
             
-            var weatherURL = $"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=98d22f11723621da9e593b63a7e84ae0";
-            var response = client.GetStringAsync(weatherURL).Result;
+            var response = client.GetStringAsync($"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={key}").Result;
             JObject goodResponse = JObject.Parse(response);
             var temperature = goodResponse["main"]["temp"];
             Console.WriteLine($"The temperature in {city} is {temperature} degrees fahrenheit.");
@@ -26,9 +27,21 @@ namespace APIsAndJSON
             
 
         }
-            
-            
-            
-            
-            }
+        public void cityWeather(string city, string aPIKey)
+        {
+
+
+            var response = client.GetStringAsync($"https://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={aPIKey}").Result;
+            JObject goodResponse = JObject.Parse(response);
+            var temperature = goodResponse["main"]["temp"];
+            Console.WriteLine($"The temperature in {city} is {temperature} degrees fahrenheit.");
+
+
+
+
+        }
+
+
+
+    }
 }
